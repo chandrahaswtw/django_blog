@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Home{% endblock  %}
+
+{% block page_styles %}
+   <link rel="stylesheet" href="{% static "blog/css/navbar.css" %}">
+{% endblock  %}
+
+{% block page_body %}
+    {% include "include/navbar.html" %}
+    <div>
+        <div>404</div>
+        <div>Page not found.</div> 
+        <a href="{% url "home" %}">Go home</a>
+    </div>
+
+{% endblock  %}
