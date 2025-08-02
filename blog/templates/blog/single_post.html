@@ -23,7 +23,7 @@
             </div>
             <div class="single-post-image-container">
                 <div class="single-post-image" style="background-image:url('{% static "images/"|add:post.image_name %}')"></div>
-                <div><i>By {{post.author}}</i></div>
+                <div><i>By {{post.author.full_name}}</i></div>
                 <div>Last updated on <b>{{post.updated_at}}</b></div>
             </div>        
         </div>
