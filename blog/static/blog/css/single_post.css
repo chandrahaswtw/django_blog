@@ -40,3 +40,17 @@
     padding: 2rem;
     margin-top: 2rem;
 }
+
+.tag-container{
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem
+}
+
+.tag{
+    background-color: white;
+    color: black;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.5em;
+}

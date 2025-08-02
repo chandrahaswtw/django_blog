@@ -28,13 +28,13 @@
         <p class="posts-title">My latest thoughts</p>
         <div class="all-posts">
             {% for i in posts %}
-                <a href="{% url "post" i.id %}" class="post">
-                    <img src="{% static "images/"|add:i.image %}" alt="" class="post-round-image">
+                <a href="{% url "post" i.slug %}" class="post">
+                    <img src="{% static "images/"|add:i.image_name %}" alt="" class="post-round-image">
                     <div class="post-title">
                         {{i.title}}
                     </div>
                     <div class="post-description">
-                        {{i.description}}
+                        {{i.excerpt}}
                     </div>
                 </a>
             {% endfor %}
