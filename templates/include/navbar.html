@@ -1,4 +1,16 @@
 <div class="navbar">
-    <a href=" {% url "home" %} " class="navbar-title">My Blog</a>
-    <a href=" {% url "allposts" %} ">All posts</a>
+    <a href="{% url "home" %}" class="navbar-title">My Blog</a>
+    <div class="navbar-side-icons">
+        <a href="{% url "allposts" %}" class="{% if active_page == 'All posts' %}active{% endif %}">All posts</a>
+        <a href="{% url "createpost" %}" class="{% if active_page == 'Create post' %}active{% endif %}">Create post</a>
+        {% if user.is_authenticated %}
+            <form action="{% url "logout" %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="log-out-button">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url "login" %}" class="{% if active_page == 'Login' %}active{% endif %}">Login</a>
+        {% endif %}
+        
+    </div>
 </div>

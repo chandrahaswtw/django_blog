@@ -15,7 +15,7 @@
             <div class="header-image-title">
                 <div class="header-image"></div>
                 <div class="header-title">
-                    <span>CHANDRAHAS'</span>
+                    <span>{{user.get_username|upper}}</span>
                     <span>BLOG</span>
                 </div>
             </div>
@@ -29,7 +29,7 @@
         <div class="all-posts">
             {% for i in posts %}
                 <a href="{% url "post" i.slug %}" class="post">
-                    <img src="{% static "images/"|add:i.image_name %}" alt="" class="post-round-image">
+                    <img src="{{ i.image.url }}" alt="" class="post-round-image">
                     <div class="post-title">
                         {{i.title}}
                     </div>

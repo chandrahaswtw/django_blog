@@ -16,3 +16,28 @@
 .navbar-title{
     font-size: 1.25em;
 }
+
+.navbar-side-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem
+}
+
+.navbar-side-icons > a:hover, .log-out-button:hover{
+    color: yellow;
+    background-color: transparent;
+}
+
+.navbar-side-icons > a.active{
+    color: yellow
+}
+
+.log-out-button{
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  font: inherit;
+  color: inherit;
+}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 
 class Author(models.Model):
@@ -16,13 +17,17 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=20)
     excerpt = models.CharField(max_length=50)
-    image_name = models.CharField(max_length=200)
+    image = models.FileField(upload_to="images")
     slug = models.SlugField(blank=True, unique=True, db_index=True)
     content = models.TextField(blank=True)
     author = models.ForeignKey(Author, null=True, on_delete=models.CASCADE)
     tags = models.ManyToManyField("Tag")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class Tag(models.Model):

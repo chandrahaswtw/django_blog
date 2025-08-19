@@ -1,0 +1,9 @@
+.existing-image{
+  padding: 8px;
+  border: 1px dotted #ccc;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}

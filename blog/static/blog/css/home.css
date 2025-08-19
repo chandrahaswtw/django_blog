@@ -10,6 +10,8 @@
 .header-image {
     background-image: url("/static/images/homeimage.jpg" );
     background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
     border: 2px solid white;
     border-radius: 5px;
     width: 10rem;

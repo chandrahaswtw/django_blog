@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}{{post.title}}{% endblock  %}
+
+{% block page_styles %}
+   <link rel="stylesheet" href="{% static "blog/css/create_post.css" %}">
+   <link rel="stylesheet" href="{% static "css/form.css" %}">
+{% endblock  %}
+
+{% block page_body %}
+    {% include "include/navbar.html" with active_page=view.object.pk|yesno:"Edit post,Create post"%}
+    <p class="form-title"> {{view.object.pk|yesno:"Update,Create"}} post</p>
+    <form method="POST" novalidate class="form-container" enctype="multipart/form-data">
+      {% csrf_token %}
+         {% for field in form %}
+            <div class="field {% if field.errors %} errorField {% endif %}">
+               {% if field.name == "image" %}
+                  <div class="file-container">
+                  <label for="{{ field.id_for_label }}" class="file-label">📂 Choose File</label>
+                  <span style="display: none">{{ field }}</span> 
+                  <span id="file-name">
+                     {% if view.object.image%}
+                        <a class="existing-image" href="{{form.instance.image.url}}" target="_blank">{{ field.value|cut:"images/" }} <i class="fa-solid fa-external-link"></i></a> 
+                     {% else %}
+                        No file chosen
+                     {% endif %}   
+                  </span>
+                  </div>
+                  {{field.errors}}
+               {% else %}
+                  {{field.label_tag}}
+                  {{field}}
+                  {{field.errors}}
+               {% endif %}
+            </div>
+         {% endfor %}
+      <div class="button-container">
+         <button type="submit">Submit</button>
+      </div>
+    </form>
+    <script src="{% static "blog/js/index.js"%}"></script>
+{% endblock  %}

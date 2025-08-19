@@ -9,7 +9,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem;
+    padding: 2rem 2rem 3rem 2rem;
+    position: relative;
+}
+
+.edit-delete-container{
+    position: absolute;
+    right: 2rem;
+    bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap:1rem
+}
+
+.delete-icon{
+    color: #ff5e57;
+}
+
+.edit-delete-container  i {
+    cursor: pointer;
 }
 
 .single-post-title{

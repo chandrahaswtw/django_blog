@@ -4,19 +4,18 @@
 {% block page_title %}All posts{% endblock  %}
 
 {% block page_styles %}
-   <link rel="stylesheet" href="{% static "blog/css/navbar.css" %}">
    <link rel="stylesheet" href="{% static "blog/css/post.css" %}">
    <link rel="stylesheet" href="{% static "blog/css/all_posts.css" %}">
 {% endblock  %}
 
 {% block page_body %}
- {% include "include/navbar.html" %}
+ {% include "include/navbar.html" with active_page="All posts"%}
     <p class="my-posts-title">My collected posts</p>
     <div class="my-posts-container">
         <div class="all-posts my-posts">
             {% for i in posts %}
                 <a href="{% url "post" i.slug %}" class="post my-post">
-                    <img src="{% static "images/"|add:i.image_name %}" alt="" class="post-round-image">
+                    <img src="{{ i.image.url }}" alt="" class="post-round-image">
                     <div class="post-title">
                         {{i.title}}
                     </div>

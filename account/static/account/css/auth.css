@@ -1,0 +1,36 @@
+.auth-form-container{
+    margin-top: 10rem ;
+    padding: 2rem 8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
+}
+
+.auth-image{
+    width: 100%;
+    height: 50vh;
+}
+
+.auth-form{
+    margin: 0 !important ;
+    align-self: start;  
+}
+
+.auth-form button {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.auth-title{
+   font-size: 1.25em;
+   text-align: center;
+}
+
+.auth-link-container{
+    text-align: center;
+}
+
+.auth-link-container > a {
+    color: blue;
+}

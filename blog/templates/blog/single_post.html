@@ -4,7 +4,6 @@
 {% block page_title %}{{post.title}}{% endblock  %}
 
 {% block page_styles %}
-   <link rel="stylesheet" href="{% static "blog/css/navbar.css" %}">
    <link rel="stylesheet" href="{% static "blog/css/post.css" %}">
    <link rel="stylesheet" href="{% static "blog/css/single_post.css" %}">
 {% endblock  %}
@@ -13,6 +12,13 @@
     {% include "include/navbar.html" %}
     <div class="single-post-wrapper">
         <div class="single-post-title-container">
+            <div class="edit-delete-container">
+                <a href=" {% url "updatepost" post.pk %} "><i class="fa-solid fa-pen-to-square"></i></a>
+                <form action=" {% url "deletepost" post.pk %} " method="POST">
+                    {% csrf_token %}
+                  <button><i class="fa-solid fa-trash delete-icon"></i></button>  
+                </form>
+            </div>
             <div class="single-post-title">
                 {{post.title}}
                 <div class="tag-container">
@@ -22,7 +28,7 @@
                 </div>
             </div>
             <div class="single-post-image-container">
-                <div class="single-post-image" style="background-image:url('{% static "images/"|add:post.image_name %}')"></div>
+                <div class="single-post-image" style="background-image:url('{{ post.image.url }}')"></div>
                 <div><i>By {{post.author.full_name}}</i></div>
                 <div>Last updated on <b>{{post.updated_at}}</b></div>
             </div>        
