@@ -11,21 +11,11 @@
 {% block page_body %}
     {% include "include/navbar.html" %}
     <div class="header">
-        <div>
-            <div class="header-image-title">
-                <div class="header-image"></div>
-                <div class="header-title">
-                    <span>{{user.get_username|upper}}</span>
-                    <span>BLOG</span>
-                </div>
-            </div>
-            <div class="header-sub-title">
-                Hi, I am Chandrahas, I love to blog tech and world.
-            </div>
-        </div>
+        <span>BLOG POSTS</span>
     </div>
     <div class="posts-container">
         <p class="posts-title">My latest thoughts</p>
+        {% if user.is_authenticated %}
         <div class="all-posts">
             {% for i in posts %}
                 <a href="{% url "post" i.slug %}" class="post">
@@ -39,5 +29,8 @@
                 </a>
             {% endfor %}
         </div>
+        {% else %}
+        <div class="header-no-auth">You are not logged in to view this section. <a href=" {% url "login" %} " class="login">Login here</a></div>
+        {% endif %}
     </div>
 {% endblock  %}

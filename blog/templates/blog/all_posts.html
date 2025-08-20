@@ -12,6 +12,9 @@
  {% include "include/navbar.html" with active_page="All posts"%}
     <p class="my-posts-title">My collected posts</p>
     <div class="my-posts-container">
+        {% for message in messages %}
+          <div class="{{message.tags}}">{{message}}</div> 
+        {% endfor %}
         <div class="all-posts my-posts">
             {% for i in posts %}
                 <a href="{% url "post" i.slug %}" class="post my-post">

@@ -12,6 +12,7 @@
     {% include "include/navbar.html" %}
     <div class="single-post-wrapper">
         <div class="single-post-title-container">
+            {% if user.is_authenticated and user == post.author %}
             <div class="edit-delete-container">
                 <a href=" {% url "updatepost" post.pk %} "><i class="fa-solid fa-pen-to-square"></i></a>
                 <form action=" {% url "deletepost" post.pk %} " method="POST">
@@ -19,6 +20,7 @@
                   <button><i class="fa-solid fa-trash delete-icon"></i></button>  
                 </form>
             </div>
+            {% endif %}
             <div class="single-post-title">
                 {{post.title}}
                 <div class="tag-container">
@@ -29,7 +31,7 @@
             </div>
             <div class="single-post-image-container">
                 <div class="single-post-image" style="background-image:url('{{ post.image.url }}')"></div>
-                <div><i>By {{post.author.full_name}}</i></div>
+                <div><i>By {{post.author.username}}</i></div>
                 <div>Last updated on <b>{{post.updated_at}}</b></div>
             </div>        
         </div>

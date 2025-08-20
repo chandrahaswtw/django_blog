@@ -11,6 +11,9 @@
 {% block page_body %}
     {% include "include/navbar.html" with active_page=view.object.pk|yesno:"Edit post,Create post"%}
     <p class="form-title"> {{view.object.pk|yesno:"Update,Create"}} post</p>
+     {% for message in messages %}
+          <span class="{{message.tags}}">{{message}}</span> 
+        {% endfor %}
     <form method="POST" novalidate class="form-container" enctype="multipart/form-data">
       {% csrf_token %}
          {% for field in form %}
